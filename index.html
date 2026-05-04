@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALOMA Workshop QC Portal</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --navy: #17365d;
+      --blue: #24527c;
+      --green: #23624d;
+      --red: #8a2424;
+      --ink: #16202a;
+      --muted: #5c6875;
+      --line: #cbd5df;
+      --soft: #f4f7fb;
+      --white: #ffffff;
+      --warn: #fff7d6;
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .shell {
+      min-height: 100vh;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .brand > div {
+      min-width: 0;
+    }
+    .mark {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: #ffffff;
+      background: var(--navy);
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    h1 {
+      margin: 0 0 3px;
+      color: var(--navy);
+      font-size: 30px;
+      line-height: 1.08;
+      overflow-wrap: anywhere;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-link {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--navy);
+      background: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .nav-link.primary {
+      border-color: var(--navy);
+      color: #ffffff;
+      background: var(--navy);
+    }
+    main {
+      padding: 26px 28px 42px;
+      max-width: 1280px;
+      overflow-x: hidden;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 330px;
+    }
+    .hero-copy h2 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 42px;
+      line-height: 1.06;
+      max-width: 760px;
+      overflow-wrap: anywhere;
+    }
+    .hero-copy p {
+      margin: 0 0 18px;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 5px;
+      border: 1px solid var(--navy);
+      color: #ffffff;
+      background: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .button.secondary {
+      color: var(--navy);
+      background: var(--white);
+    }
+    .access-note {
+      max-width: 760px;
+      margin: 0;
+      padding: 11px 13px;
+      border-left: 5px solid #d69e2e;
+      background: var(--warn);
+      color: #374151;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .route-panel {
+      min-height: 330px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--soft);
+      overflow: hidden;
+    }
+    .route-panel h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+    .route-map {
+      width: 100%;
+      height: 250px;
+      display: block;
+    }
+    .section {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .section h3 {
+      margin: 0;
+      padding: 12px 14px;
+      color: #ffffff;
+      background: var(--navy);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 14px;
+    }
+    .card {
+      min-height: 145px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px;
+      border-radius: 6px;
+      color: #ffffff;
+      background: var(--blue);
+      text-decoration: none;
+    }
+    .card.green { background: var(--green); }
+    .card.red { background: var(--red); }
+    .card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 20px;
+      line-height: 1.18;
+    }
+    .card span {
+      display: block;
+      color: rgba(255,255,255,.9);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .card em {
+      display: block;
+      margin-top: 14px;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.92);
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(170px, 1fr));
+      gap: 0;
+    }
+    .info {
+      min-height: 132px;
+      padding: 14px;
+      border-right: 1px solid var(--line);
+    }
+    .info:last-child { border-right: 0; }
+    .info b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.38;
+    }
+    .quick-list {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .quick-list th,
+    .quick-list td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .quick-list th {
+      color: #ffffff;
+      background: #52606d;
+      font-size: 13px;
+    }
+    .quick-list tr:last-child td { border-bottom: 0; }
+    .status {
+      display: inline-block;
+      min-width: 92px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--green);
+      background: #e7f4ef;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .mini-button {
+      display: inline-flex;
+      min-width: 88px;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 10px;
+      border-radius: 4px;
+      color: #ffffff;
+      background: var(--navy);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .footer-note {
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .footer-note b { color: var(--navy); }
+    @media (max-width: 980px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-actions { justify-content: flex-start; }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy { min-height: 0; }
+      .hero-copy h2 { font-size: 34px; }
+      .route-panel { min-height: 280px; }
+      .cards { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .info:nth-child(2) { border-right: 0; }
+      .info:nth-child(1),
+      .info:nth-child(2) { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 680px) {
+      header { padding: 16px 18px; }
+      main { padding: 18px 18px 32px; }
+      .brand {
+        align-items: flex-start;
+        flex-direction: column;
+        width: 100%;
+      }
+      .brand > div { min-width: 0; }
+      .mark { width: 58px; height: 58px; }
+      h1 {
+        max-width: 100%;
+        font-size: 23px;
+      }
+      .hero-copy h2 { font-size: 29px; }
+      .hero-copy p { font-size: 15px; }
+      .cta-row,
+      .nav-actions { flex-direction: column; width: 100%; }
+      .button,
+      .nav-link { width: 100%; }
+      .route-panel { padding: 13px; }
+      .route-map { height: 220px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .info { border-right: 0; border-bottom: 1px solid var(--line); }
+      .info:last-child { border-bottom: 0; }
+      .table-scroll { overflow-x: auto; }
+      .quick-list { min-width: 760px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="mark">QC</div>
+        <div>
+          <h1>ALOMA Workshop QC Portal</h1>
+          <p class="subtitle">A fast public-safe front door for current QC links and protected Microsoft 365 records.</p>
+        </div>
+      </div>
+      <nav class="nav-actions" aria-label="Primary">
+        <a class="nav-link" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC" target="_blank" rel="noopener noreferrer">Company SharePoint</a>
+        <a class="nav-link primary" href="#main-qc-areas">Choose QC Area</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <h2 id="page-title">Workshop QC information in one easy first click.</h2>
+          <p>
+            This landing page is the email-signature front door. It opens quickly, explains what the QC portal is,
+            then sends readers to the protected company files only when they choose an area.
+          </p>
+          <div class="cta-row">
+            <a class="button" href="#main-qc-areas">Choose QC Area</a>
+            <a class="button secondary" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC" target="_blank" rel="noopener noreferrer">Open Company SharePoint</a>
+          </div>
+          <p class="access-note">
+            Protected files stay inside Microsoft 365. If Microsoft asks for sign-in, use the company account with access.
+          </p>
+        </div>
+
+        <aside class="route-panel" aria-labelledby="route-title">
+          <h3 id="route-title">Reader Path</h3>
+          <svg class="route-map" viewBox="0 0 560 300" role="img" aria-label="Email link opens a GitHub Pages landing page, then protected SharePoint areas">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#17365d"></path>
+              </marker>
+            </defs>
+            <rect x="20" y="34" width="150" height="76" rx="8" fill="#ffffff" stroke="#cbd5df"></rect>
+            <text x="95" y="64" text-anchor="middle" fill="#17365d" font-size="16" font-weight="700">Email</text>
+            <text x="95" y="88" text-anchor="middle" fill="#5c6875" font-size="12">Signature Link</text>
+            <path d="M172 72 C214 72, 224 72, 264 72" fill="none" stroke="#17365d" stroke-width="3" marker-end="url(#arrow)"></path>
+
+            <rect x="268" y="20" width="210" height="104" rx="8" fill="#17365d"></rect>
+            <text x="373" y="55" text-anchor="middle" fill="#ffffff" font-size="17" font-weight="700">GitHub Pages</text>
+            <text x="373" y="80" text-anchor="middle" fill="#dbeafe" font-size="12">QC Portal Front Door</text>
+            <text x="373" y="101" text-anchor="middle" fill="#dbeafe" font-size="12">choose an area</text>
+
+            <path d="M373 126 C373 158, 373 163, 373 190" fill="none" stroke="#17365d" stroke-width="3" marker-end="url(#arrow)"></path>
+            <rect x="238" y="194" width="270" height="80" rx="8" fill="#ffffff" stroke="#cbd5df"></rect>
+            <text x="373" y="225" text-anchor="middle" fill="#17365d" font-size="16" font-weight="700">Protected Files</text>
+            <text x="373" y="249" text-anchor="middle" fill="#5c6875" font-size="12">Encoder, NCR, WI, reports, records</text>
+
+            <rect x="20" y="194" width="150" height="80" rx="8" fill="#fff7d6" stroke="#e3c66d"></rect>
+            <text x="95" y="226" text-anchor="middle" fill="#17365d" font-size="15" font-weight="700">No file dump</text>
+            <text x="95" y="250" text-anchor="middle" fill="#5c6875" font-size="12">clear front door</text>
+          </svg>
+        </aside>
+      </section>
+
+      <section class="section" id="main-qc-areas" aria-labelledby="areas-title">
+        <h3 id="areas-title">Main QC Areas</h3>
+        <div class="cards">
+          <a class="card" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F00_QC_WI_ENCODER_PACKAGE_MAY_2026" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>Daily Encoder Package</strong>
+              Current checksheet, daily encoding route, WI PDF access, and print support.
+            </span>
+            <em>Open protected file</em>
+          </a>
+          <a class="card green" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F01_WQC_ORGANIZATION_MODULE%2F00_TRUE_CURRENT_PRESENTABLE" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>QC Coordination</strong>
+              Current organization, manpower, training, and system support files.
+            </span>
+            <em>Open protected folder</em>
+          </a>
+          <a class="card red" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F02_WQC_NCR_MODULE%2F00_INDEX" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>NCR / Evidence</strong>
+              Current NCR register, monitoring log, templates, case folders, and evidence route.
+            </span>
+            <em>Open protected folder</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="value-title">
+        <h3 id="value-title">What This Page Shows First</h3>
+        <div class="info-grid">
+          <div class="info">
+            <b>Organized QC Work</b>
+            <p>Readers see a clear QC control center before they enter Microsoft file views.</p>
+          </div>
+          <div class="info">
+            <b>Current File Direction</b>
+            <p>The main route points to current files, not old folders or scattered references.</p>
+          </div>
+          <div class="info">
+            <b>Production Support</b>
+            <p>Work instructions, print helpers, NCR status, and reports are grouped by use.</p>
+          </div>
+          <div class="info">
+            <b>Protected Records</b>
+            <p>Company documents remain in Microsoft 365 with account-based permissions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section table-scroll" aria-labelledby="quick-title">
+        <h3 id="quick-title">Quick Access Sample</h3>
+        <table class="quick-list">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Status</th>
+              <th>Purpose</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Workshop QC Portal</td>
+              <td><span class="status">OPEN</span></td>
+              <td>This GitHub Pages front page is the portal entry. Choose a QC area, then Microsoft 365 opens only for protected files.</td>
+              <td><a class="mini-button" href="#main-qc-areas">Choose</a></td>
+            </tr>
+            <tr>
+              <td>Encoder Package</td>
+              <td><span class="status">PROTECTED</span></td>
+              <td>Daily encoding, checksheet, print forms, and WI file route.</td>
+              <td><a class="mini-button" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F00_QC_WI_ENCODER_PACKAGE_MAY_2026" target="_blank" rel="noopener noreferrer">Open</a></td>
+            </tr>
+            <tr>
+              <td>NCR / Evidence Module</td>
+              <td><span class="status">PROTECTED</span></td>
+              <td>NCR register, case folders, evidence, and monitoring references.</td>
+              <td><a class="mini-button" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F02_WQC_NCR_MODULE%2F00_INDEX" target="_blank" rel="noopener noreferrer">Open</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="footer-note">
+        <b>Browser-open rule:</b> publish only this safe landing page and use normal HTTPS links for protected company areas.
+        Do not use desktop app protocol links, local file paths, shortcut files, or controlled documents inside GitHub Pages.
+      </div>
+    </main>
+  </div>
+</body>
+</html>
