@@ -20,6 +20,10 @@ GitHub Pages URL shape:
 
 `https://artkis.github.io/aloma-workshop-qc-portal/`
 
+Edge-first email signature link:
+
+`microsoft-edge:https://artkis.github.io/aloma-workshop-qc-portal/`
+
 ## Files To Publish
 
 - `index.html`
@@ -27,7 +31,11 @@ GitHub Pages URL shape:
 
 ## Browser Rule
 
-All portal links must stay as normal HTTPS browser links.
+Use a normal HTTPS link when the page must work in any browser.
+
+Use an Edge protocol link when the company requirement is to land in Microsoft Edge on Windows:
+
+`microsoft-edge:https://...`
 
 Do not use:
 
@@ -37,6 +45,8 @@ Do not use:
 - local `C:\...` paths
 - `.url` shortcut files
 - `.lnk` shortcut files
+
+Note: `microsoft-edge:` is Windows/Edge-specific. If an email app or non-Windows device blocks protocol links, use the normal HTTPS URL as fallback.
 
 ## Safe Publishing Rule
 
