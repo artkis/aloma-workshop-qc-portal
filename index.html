@@ -11,13 +11,14 @@
       --blue: #24527c;
       --green: #23624d;
       --red: #8a2424;
+      --amber: #9a6b14;
       --ink: #16202a;
       --muted: #5c6875;
       --line: #cbd5df;
       --soft: #f4f7fb;
       --white: #ffffff;
-      --warn: #fff7d6;
     }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       color: var(--ink);
@@ -26,11 +27,7 @@
       overflow-x: hidden;
     }
     a { color: inherit; }
-    .shell {
-      min-height: 100vh;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
+    .shell { min-height: 100vh; }
     header {
       display: flex;
       align-items: center;
@@ -44,9 +41,6 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      min-width: 0;
-    }
-    .brand > div {
       min-width: 0;
     }
     .mark {
@@ -82,112 +76,115 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-    .nav-link {
+    .nav-link,
+    .button,
+    .mini-button {
       display: inline-flex;
-      min-height: 40px;
       align-items: center;
       justify-content: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .nav-link {
+      min-height: 40px;
       padding: 9px 13px;
       border: 1px solid var(--line);
-      border-radius: 5px;
       color: var(--navy);
       background: var(--white);
-      text-decoration: none;
       font-size: 13px;
-      font-weight: 700;
     }
-    .nav-link.primary {
-      border-color: var(--navy);
+    .nav-link.primary,
+    .button,
+    .mini-button {
+      border: 1px solid var(--navy);
       color: #ffffff;
       background: var(--navy);
     }
     main {
+      width: 100%;
       padding: 26px 28px 42px;
       max-width: 1280px;
-      overflow-x: hidden;
     }
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+      grid-template-columns: minmax(0, 1fr) 360px;
       gap: 24px;
       align-items: stretch;
       margin-bottom: 22px;
+      min-width: 0;
     }
     .hero-copy {
       display: flex;
+      min-height: 300px;
       flex-direction: column;
       justify-content: center;
-      min-height: 330px;
+      min-width: 0;
     }
     .hero-copy h2 {
+      max-width: 760px;
       margin: 0 0 12px;
       color: var(--navy);
       font-size: 42px;
       line-height: 1.06;
-      max-width: 760px;
       overflow-wrap: anywhere;
     }
     .hero-copy p {
+      max-width: 780px;
       margin: 0 0 18px;
-      max-width: 760px;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.45;
-      overflow-wrap: anywhere;
     }
     .cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 12px;
     }
     .button {
-      display: inline-flex;
       min-height: 46px;
-      align-items: center;
-      justify-content: center;
       padding: 11px 16px;
-      border-radius: 5px;
-      border: 1px solid var(--navy);
-      color: #ffffff;
-      background: var(--navy);
-      text-decoration: none;
       font-size: 14px;
-      font-weight: 800;
     }
     .button.secondary {
       color: var(--navy);
       background: var(--white);
     }
-    .access-note {
-      max-width: 760px;
-      margin: 0;
-      padding: 11px 13px;
-      border-left: 5px solid #d69e2e;
-      background: var(--warn);
-      color: #374151;
-      font-size: 14px;
-      line-height: 1.35;
-    }
-    .route-panel {
-      min-height: 330px;
+    .status-panel {
+      min-height: 300px;
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 7px;
       background: var(--soft);
-      overflow: hidden;
+      min-width: 0;
     }
-    .route-panel h3 {
+    .status-panel h3 {
       margin: 0 0 12px;
       color: var(--navy);
       font-size: 18px;
     }
-    .route-map {
-      width: 100%;
-      height: 250px;
+    .signal {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .signal div {
+      padding: 12px;
+      border-left: 5px solid var(--navy);
+      background: #ffffff;
+    }
+    .signal b {
       display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .signal span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
     }
     .section {
+      max-width: 100%;
       margin-top: 20px;
       border: 1px solid var(--line);
       border-radius: 7px;
@@ -209,7 +206,7 @@
       padding: 14px;
     }
     .card {
-      min-height: 145px;
+      min-height: 150px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -221,6 +218,7 @@
     }
     .card.green { background: var(--green); }
     .card.red { background: var(--red); }
+    .card.amber { background: var(--amber); }
     .card strong {
       display: block;
       margin-bottom: 7px;
@@ -229,19 +227,19 @@
     }
     .card span {
       display: block;
-      color: rgba(255,255,255,.9);
+      color: rgba(255,255,255,.92);
       font-size: 13px;
       line-height: 1.35;
     }
     .card em {
       display: block;
       margin-top: 14px;
-      font-style: normal;
+      color: rgba(255,255,255,.94);
       font-size: 12px;
+      font-style: normal;
       font-weight: 800;
       letter-spacing: .04em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.92);
     }
     .info-grid {
       display: grid;
@@ -284,7 +282,7 @@
       font-size: 13px;
     }
     .quick-list tr:last-child td { border-bottom: 0; }
-    .status {
+    .pill {
       display: inline-block;
       min-width: 92px;
       padding: 4px 8px;
@@ -296,18 +294,10 @@
       font-weight: 800;
     }
     .mini-button {
-      display: inline-flex;
-      min-width: 88px;
+      min-width: 92px;
       min-height: 34px;
-      align-items: center;
-      justify-content: center;
       padding: 8px 10px;
-      border-radius: 4px;
-      color: #ffffff;
-      background: var(--navy);
-      text-decoration: none;
       font-size: 13px;
-      font-weight: 800;
     }
     .footer-note {
       margin-top: 18px;
@@ -326,12 +316,9 @@
         flex-direction: column;
       }
       .nav-actions { justify-content: flex-start; }
-      .hero {
-        grid-template-columns: 1fr;
-      }
+      .hero { grid-template-columns: 1fr; }
       .hero-copy { min-height: 0; }
       .hero-copy h2 { font-size: 34px; }
-      .route-panel { min-height: 280px; }
       .cards { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: repeat(2, 1fr); }
       .info:nth-child(2) { border-right: 0; }
@@ -339,32 +326,68 @@
       .info:nth-child(2) { border-bottom: 1px solid var(--line); }
     }
     @media (max-width: 680px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
       header { padding: 16px 18px; }
-      main { padding: 18px 18px 32px; }
+      main {
+        width: 100%;
+        padding: 18px 18px 32px;
+      }
+      .shell,
+      header,
+      main,
+      .hero,
+      .hero-copy,
+      .status-panel,
+      .section {
+        max-width: calc(100vw - 36px);
+      }
       .brand {
         align-items: flex-start;
         flex-direction: column;
         width: 100%;
       }
-      .brand > div { min-width: 0; }
       .mark { width: 58px; height: 58px; }
-      h1 {
-        max-width: 100%;
-        font-size: 23px;
+      h1 { font-size: 23px; }
+      .hero-copy h2 {
+        width: 300px;
+        max-width: calc(100vw - 72px);
+        font-size: 24px;
+        line-height: 1.12;
       }
-      .hero-copy h2 { font-size: 29px; }
+      .hero-copy p,
+      .subtitle,
+      .signal span {
+        width: 300px;
+        max-width: calc(100vw - 72px);
+      }
       .hero-copy p { font-size: 15px; }
       .cta-row,
-      .nav-actions { flex-direction: column; width: 100%; }
+      .nav-actions {
+        flex-direction: column;
+        width: 100%;
+      }
       .button,
-      .nav-link { width: 100%; }
-      .route-panel { padding: 13px; }
-      .route-map { height: 220px; }
+      .nav-link {
+        width: calc(100vw - 36px);
+        max-width: calc(100vw - 36px);
+      }
       .info-grid { grid-template-columns: 1fr; }
       .info { border-right: 0; border-bottom: 1px solid var(--line); }
       .info:last-child { border-bottom: 0; }
       .table-scroll { overflow-x: auto; }
-      .quick-list { min-width: 760px; }
+      .quick-list {
+        min-width: 0;
+        table-layout: fixed;
+      }
+      .quick-list th,
+      .quick-list td {
+        overflow-wrap: anywhere;
+      }
     }
   </style>
 </head>
@@ -375,178 +398,186 @@
         <div class="mark">QC</div>
         <div>
           <h1>ALOMA Workshop QC Portal</h1>
-          <p class="subtitle">A fast public-safe front door for current QC links and protected Microsoft 365 records.</p>
+          <p class="subtitle">Current QC activity, daily routes, NCR visibility, reports, and production support in one clickable portal.</p>
         </div>
       </div>
       <nav class="nav-actions" aria-label="Primary">
-        <a class="nav-link" href="microsoft-edge:https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC">Company SharePoint</a>
-        <a class="nav-link primary" href="#main-qc-areas">Choose QC Area</a>
+        <a class="nav-link primary" href="#daily-routes">Daily Routes</a>
+        <a class="nav-link" href="#ncr-control">NCR Control</a>
+        <a class="nav-link" href="#current-register">Current Register</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-copy">
-          <h2 id="page-title">Workshop QC information in one easy first click.</h2>
+          <h2 id="page-title">Workshop QC work, organized for daily use and management review.</h2>
           <p>
-            This landing page is the email-signature front door. It opens quickly, explains what the QC portal is,
-            then sends readers to the protected company files only when they choose an area.
+            This is the QC portal itself. The first screen shows the active QC routes, what each area controls,
+            and where current records, work instructions, NCR follow-up, and production support are organized.
           </p>
           <div class="cta-row">
-            <a class="button" href="#main-qc-areas">Choose QC Area</a>
-            <a class="button secondary" href="microsoft-edge:https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC">Open Company SharePoint</a>
+            <a class="button" href="#daily-routes">Open Daily Routes</a>
+            <a class="button secondary" href="#current-register">Open Current Register</a>
           </div>
-          <p class="access-note">
-            Protected file buttons are set to open in Microsoft Edge on Windows. If Microsoft asks for sign-in, use the company account with access.
-          </p>
         </div>
 
-        <aside class="route-panel" aria-labelledby="route-title">
-          <h3 id="route-title">Reader Path</h3>
-          <svg class="route-map" viewBox="0 0 560 300" role="img" aria-label="Email link opens a GitHub Pages landing page, then protected SharePoint areas">
-            <defs>
-              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                <path d="M0,0 L10,5 L0,10 Z" fill="#17365d"></path>
-              </marker>
-            </defs>
-            <rect x="20" y="34" width="150" height="76" rx="8" fill="#ffffff" stroke="#cbd5df"></rect>
-            <text x="95" y="64" text-anchor="middle" fill="#17365d" font-size="16" font-weight="700">Email</text>
-            <text x="95" y="88" text-anchor="middle" fill="#5c6875" font-size="12">Signature Link</text>
-            <path d="M172 72 C214 72, 224 72, 264 72" fill="none" stroke="#17365d" stroke-width="3" marker-end="url(#arrow)"></path>
-
-            <rect x="268" y="20" width="210" height="104" rx="8" fill="#17365d"></rect>
-            <text x="373" y="55" text-anchor="middle" fill="#ffffff" font-size="17" font-weight="700">GitHub Pages</text>
-            <text x="373" y="80" text-anchor="middle" fill="#dbeafe" font-size="12">QC Portal Front Door</text>
-            <text x="373" y="101" text-anchor="middle" fill="#dbeafe" font-size="12">choose an area</text>
-
-            <path d="M373 126 C373 158, 373 163, 373 190" fill="none" stroke="#17365d" stroke-width="3" marker-end="url(#arrow)"></path>
-            <rect x="238" y="194" width="270" height="80" rx="8" fill="#ffffff" stroke="#cbd5df"></rect>
-            <text x="373" y="225" text-anchor="middle" fill="#17365d" font-size="16" font-weight="700">Protected Files</text>
-            <text x="373" y="249" text-anchor="middle" fill="#5c6875" font-size="12">Encoder, NCR, WI, reports, records</text>
-
-            <rect x="20" y="194" width="150" height="80" rx="8" fill="#fff7d6" stroke="#e3c66d"></rect>
-            <text x="95" y="226" text-anchor="middle" fill="#17365d" font-size="15" font-weight="700">No file dump</text>
-            <text x="95" y="250" text-anchor="middle" fill="#5c6875" font-size="12">clear front door</text>
-          </svg>
+        <aside class="status-panel" aria-labelledby="status-title">
+          <h3 id="status-title">Current QC Focus</h3>
+          <div class="signal">
+            <div>
+              <b>Daily Control</b>
+              <span>Encoding, inspection forms, WI print support, and HOLD/PASS print supply are grouped for daily work.</span>
+            </div>
+            <div>
+              <b>NCR Visibility</b>
+              <span>NCR list, case index, evidence route, and monitoring log are separated from raw reference folders.</span>
+            </div>
+            <div>
+              <b>Coordination</b>
+              <span>Organization, manpower, training, and improvement files stay visible as current Workshop QC coordination work.</span>
+            </div>
+          </div>
         </aside>
       </section>
 
-      <section class="section" id="main-qc-areas" aria-labelledby="areas-title">
-        <h3 id="areas-title">Main QC Areas</h3>
+      <section class="section" id="daily-routes" aria-labelledby="daily-title">
+        <h3 id="daily-title">Daily QC Routes</h3>
         <div class="cards">
           <a class="card" href="#encoder-package">
             <span>
               <strong>Daily Encoder Package</strong>
-              Current checksheet, daily encoding route, WI PDF access, and print support.
+              Current checksheet route, encoder guide, WI references, and inspection print support.
             </span>
-            <em>View area route</em>
+            <em>Open route</em>
           </a>
-          <a class="card green" href="#qc-coordination">
+          <a class="card green" href="#wi-print">
             <span>
-              <strong>QC Coordination</strong>
-              Current organization, manpower, training, and system support files.
+              <strong>WI PDF / Print Files</strong>
+              Printable work instructions, blank checksheets, and inspector print helpers.
             </span>
-            <em>View area route</em>
+            <em>Open route</em>
           </a>
-          <a class="card red" href="#ncr-evidence">
+          <a class="card amber" href="#status-print">
             <span>
-              <strong>NCR / Evidence</strong>
-              Current NCR register, monitoring log, templates, case folders, and evidence route.
+              <strong>PASS / HOLD Print Supply</strong>
+              Status stickers and print helpers for clear workshop inspection control.
             </span>
-            <em>View area route</em>
+            <em>Open route</em>
           </a>
         </div>
       </section>
 
-      <section class="section table-scroll" aria-labelledby="route-guide-title">
-        <h3 id="route-guide-title">Area Route Guide</h3>
+      <section class="section" id="ncr-control" aria-labelledby="ncr-title">
+        <h3 id="ncr-title">NCR And Evidence Control</h3>
+        <div class="cards">
+          <a class="card red" href="#ncr-list">
+            <span>
+              <strong>NCR List</strong>
+              Current case numbers, record status, and register references for nonconformance follow-up.
+            </span>
+            <em>Open route</em>
+          </a>
+          <a class="card red" href="#ncr-cases">
+            <span>
+              <strong>NCR Case Index</strong>
+              Reader-ready case page with status, NCR file route, and evidence route.
+            </span>
+            <em>Open route</em>
+          </a>
+          <a class="card red" href="#ncr-source">
+            <span>
+              <strong>True NCR Organized Source</strong>
+              Organized NCR examples, formal reference cases, drafts, source indexes, and evidence pointers.
+            </span>
+            <em>Open route</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="coordination" aria-labelledby="coord-title">
+        <h3 id="coord-title">QC Coordination And Reports</h3>
+        <div class="info-grid">
+          <div class="info">
+            <b>QC Coordination Files</b>
+            <p>Current organization, manpower, training, and improvement files for Workshop QC coordination.</p>
+          </div>
+          <div class="info">
+            <b>Reports And Charts</b>
+            <p>Monthly and weekly QC reporting routes keep improvement work visible and reviewable.</p>
+          </div>
+          <div class="info">
+            <b>Production Support</b>
+            <p>Forms, work instructions, status routes, and NCR follow-up support production decisions.</p>
+          </div>
+          <div class="info">
+            <b>Continuity</b>
+            <p>Current paths and summary routes reduce dependence on memory or scattered folders.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section table-scroll" id="current-register" aria-labelledby="register-title">
+        <h3 id="register-title">Current QC Portal Register</h3>
         <table class="quick-list">
           <thead>
             <tr>
-              <th>Area</th>
-              <th>What Readers Can Understand Here</th>
-              <th>Protected Action</th>
+              <th>Portal Route</th>
+              <th>Status</th>
+              <th>What It Controls</th>
+              <th>Open</th>
             </tr>
           </thead>
           <tbody>
             <tr id="encoder-package">
               <td>Daily Encoder Package</td>
-              <td>Daily QC encoding is organized into one package route for current checksheets, WI access, printing, and controlled form support.</td>
-              <td><a class="mini-button" href="microsoft-edge:https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F00_QC_WI_ENCODER_PACKAGE_MAY_2026">Open protected folder</a></td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Daily encoding, active monthly checksheet, encoder guide, WI PDF access, and print supply route.</td>
+              <td><a class="mini-button" href="#daily-routes">Open</a></td>
             </tr>
-            <tr id="qc-coordination">
-              <td>QC Coordination</td>
-              <td>Workshop QC coordination files show the current organization, manpower support, training route, and system improvement references.</td>
-              <td><a class="mini-button" href="microsoft-edge:https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F01_WQC_ORGANIZATION_MODULE%2F00_TRUE_CURRENT_PRESENTABLE">Open protected folder</a></td>
+            <tr id="wi-print">
+              <td>WI PDF / Print Files</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Printable work instructions, blank inspection forms, and helper pages for repeated workshop printing.</td>
+              <td><a class="mini-button" href="#daily-routes">Open</a></td>
             </tr>
-            <tr id="ncr-evidence">
-              <td>NCR / Evidence</td>
-              <td>NCR and evidence work is grouped through a controlled register, monitoring route, templates, case folders, and supporting records.</td>
-              <td><a class="mini-button" href="microsoft-edge:https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FAlomaWorkshopQC%2FShared%20Documents%2F02_WQC_NCR_MODULE%2F00_INDEX">Open protected folder</a></td>
+            <tr id="status-print">
+              <td>PASS / HOLD Print Supply</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Status-sticker printing and inspection status support for workshop release control.</td>
+              <td><a class="mini-button" href="#daily-routes">Open</a></td>
             </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="section" aria-labelledby="value-title">
-        <h3 id="value-title">What This Page Shows First</h3>
-        <div class="info-grid">
-          <div class="info">
-            <b>Organized QC Work</b>
-            <p>Readers see a clear QC control center before they enter Microsoft file views.</p>
-          </div>
-          <div class="info">
-            <b>Current File Direction</b>
-            <p>The main route points to current files, not old folders or scattered references.</p>
-          </div>
-          <div class="info">
-            <b>Production Support</b>
-            <p>Work instructions, print helpers, NCR status, and reports are grouped by use.</p>
-          </div>
-          <div class="info">
-            <b>Protected Records</b>
-            <p>Company documents remain in Microsoft 365 with account-based permissions.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section table-scroll" aria-labelledby="quick-title">
-        <h3 id="quick-title">Quick Access Sample</h3>
-        <table class="quick-list">
-          <thead>
-            <tr>
-              <th>Area</th>
-              <th>Status</th>
-              <th>Purpose</th>
-              <th>Action</th>
+            <tr id="ncr-list">
+              <td>NCR List</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Direct register route for NCR case numbers, status tracking, and current case register items.</td>
+              <td><a class="mini-button" href="#ncr-control">Open</a></td>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Workshop QC Portal</td>
-              <td><span class="status">OPEN</span></td>
-              <td>This GitHub Pages front page is the portal entry. Choose a QC area, then Microsoft 365 opens only for protected files.</td>
-              <td><a class="mini-button" href="#main-qc-areas">Choose</a></td>
+            <tr id="ncr-cases">
+              <td>NCR Case Index</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Reader-ready case index with current status, NCR file route, and evidence route.</td>
+              <td><a class="mini-button" href="#ncr-control">Open</a></td>
+            </tr>
+            <tr id="ncr-source">
+              <td>True NCR Organized Source</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Organized NCR examples, reference cases, drafts, evidence pointers, and source indexes.</td>
+              <td><a class="mini-button" href="#ncr-control">Open</a></td>
             </tr>
             <tr>
-              <td>Encoder Package</td>
-              <td><span class="status">PROTECTED</span></td>
-              <td>Daily encoding, checksheet, print forms, and WI file route.</td>
-              <td><a class="mini-button" href="#encoder-package">View</a></td>
-            </tr>
-            <tr>
-              <td>NCR / Evidence Module</td>
-              <td><span class="status">PROTECTED</span></td>
-              <td>NCR register, case folders, evidence, and monitoring references.</td>
-              <td><a class="mini-button" href="#ncr-evidence">View</a></td>
+              <td>QC Coordination Files</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Current organization, manpower, training, and improvement files for Workshop QC coordination.</td>
+              <td><a class="mini-button" href="#coordination">Open</a></td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <div class="footer-note">
-        <b>Edge-open rule:</b> this safe landing page can be opened from email with an Edge protocol link.
-        Protected company-area buttons are also set for Microsoft Edge on Windows. Do not publish controlled documents inside GitHub Pages.
+        <b>Portal boundary:</b> this public page shows the organized QC control routes and current status only.
+        Controlled records, NCR evidence, templates, and company files remain inside the approved company file system.
       </div>
     </main>
   </div>

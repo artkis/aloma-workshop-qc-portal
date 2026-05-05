@@ -1,4 +1,4 @@
-# Deploy Steps - GitHub Pages
+# Deploy Notes - Workshop QC Portal
 
 Current test repository:
 
@@ -20,7 +20,11 @@ GitHub Pages URL shape:
 
 `https://artkis.github.io/aloma-workshop-qc-portal/`
 
-Edge-first email signature link:
+Email signature target:
+
+`https://artkis.github.io/aloma-workshop-qc-portal/`
+
+If the company requires Edge on Windows, the email signature can use this protocol target:
 
 `microsoft-edge:https://artkis.github.io/aloma-workshop-qc-portal/`
 
@@ -29,13 +33,11 @@ Edge-first email signature link:
 - `index.html`
 - `README.md`
 
-## Browser Rule
+## Portal Route Rule
 
-Use a normal HTTPS link when the page must work in any browser.
+The GitHub Pages URL opens the clickable QC portal directly.
 
-Use an Edge protocol link when the company requirement is to land in Microsoft Edge on Windows:
-
-`microsoft-edge:https://...`
+Do not make the first portal click land in a SharePoint folder or Microsoft sign-in screen. Public buttons should route inside the portal first. Protected company files remain in the approved company file system and are not published here.
 
 Do not use:
 
@@ -52,4 +54,4 @@ Note: `microsoft-edge:` is Windows/Edge-specific. If an email app or non-Windows
 
 Do not publish controlled files, case evidence, internal drafts, private working notes, or company records to GitHub Pages.
 
-GitHub Pages is only the front door. Protected company files stay in Microsoft 365 / SharePoint.
+GitHub Pages is the public-safe clickable QC portal surface. Controlled company records stay in the approved company file system.

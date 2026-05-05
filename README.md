@@ -1,20 +1,20 @@
-# GitHub Pages Sample - Workshop QC Portal
+# Workshop QC Portal - GitHub Pages
 
-This folder is a local preview of a GitHub Pages-style landing page.
+This folder contains the public-safe Workshop QC portal page published through GitHub Pages.
 
 Purpose:
 
-- Email signature opens a simple, fast public-safe page.
-- The page explains the Workshop QC portal and shows main access buttons.
-- Controlled files remain in protected Microsoft 365 / SharePoint links.
-- For the current Windows/email route, protected SharePoint buttons are set with `microsoft-edge:` links so they land in Microsoft Edge. Keep a normal HTTPS fallback for non-Windows readers if needed.
+- Email signature opens this clickable QC portal directly.
+- The page shows current QC routes, visible QC activity areas, NCR control, daily encoding, WI/print support, reports, and coordination routes.
+- The page must not send the first user click into a SharePoint folder or Microsoft sign-in screen.
+- Controlled files, NCR evidence, templates, and company records remain inside the approved company file system and are not published here.
 
 Do not publish controlled files, case evidence, internal drafts, or company records to GitHub Pages.
 
-For a real GitHub Pages deployment, the required file is:
+Published file:
 
 - `index.html`
 
-Example future URL shape:
+Live URL:
 
-- `https://<github-user-or-org>.github.io/<repo-name>/`
+- `https://artkis.github.io/aloma-workshop-qc-portal/`
