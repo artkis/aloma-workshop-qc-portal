@@ -246,6 +246,55 @@
       grid-template-columns: repeat(4, minmax(170px, 1fr));
       gap: 0;
     }
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 12px;
+      padding: 14px;
+    }
+    .route-detail {
+      min-height: 170px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      scroll-margin-top: 18px;
+    }
+    .route-detail h4 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .route-detail p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.38;
+    }
+    .route-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 12px;
+    }
+    .route-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--soft);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .route-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
     .info {
       min-height: 132px;
       padding: 14px;
@@ -282,6 +331,7 @@
       font-size: 13px;
     }
     .quick-list tr:last-child td { border-bottom: 0; }
+    .quick-list tr { scroll-margin-top: 18px; }
     .pill {
       display: inline-block;
       min-width: 92px;
@@ -320,6 +370,7 @@
       .hero-copy { min-height: 0; }
       .hero-copy h2 { font-size: 34px; }
       .cards { grid-template-columns: 1fr; }
+      .route-grid { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: repeat(2, 1fr); }
       .info:nth-child(2) { border-right: 0; }
       .info:nth-child(1),
@@ -388,6 +439,15 @@
       .quick-list td {
         overflow-wrap: anywhere;
       }
+      .route-grid {
+        padding: 12px;
+      }
+      .route-actions {
+        flex-direction: column;
+      }
+      .mini-button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -444,21 +504,21 @@
       <section class="section" id="daily-routes" aria-labelledby="daily-title">
         <h3 id="daily-title">Daily QC Routes</h3>
         <div class="cards">
-          <a class="card" href="#encoder-package">
+          <a class="card" href="#encoder-package-route">
             <span>
               <strong>Daily Encoder Package</strong>
               Current checksheet route, encoder guide, WI references, and inspection print support.
             </span>
             <em>Open route</em>
           </a>
-          <a class="card green" href="#wi-print">
+          <a class="card green" href="#wi-print-route">
             <span>
               <strong>WI PDF / Print Files</strong>
               Printable work instructions, blank checksheets, and inspector print helpers.
             </span>
             <em>Open route</em>
           </a>
-          <a class="card amber" href="#status-print">
+          <a class="card amber" href="#status-print-route">
             <span>
               <strong>PASS / HOLD Print Supply</strong>
               Status stickers and print helpers for clear workshop inspection control.
@@ -471,21 +531,21 @@
       <section class="section" id="ncr-control" aria-labelledby="ncr-title">
         <h3 id="ncr-title">NCR And Evidence Control</h3>
         <div class="cards">
-          <a class="card red" href="#ncr-list">
+          <a class="card red" href="#ncr-list-route">
             <span>
               <strong>NCR List</strong>
               Current case numbers, record status, and register references for nonconformance follow-up.
             </span>
             <em>Open route</em>
           </a>
-          <a class="card red" href="#ncr-cases">
+          <a class="card red" href="#ncr-cases-route">
             <span>
               <strong>NCR Case Index</strong>
               Reader-ready case page with status, NCR file route, and evidence route.
             </span>
             <em>Open route</em>
           </a>
-          <a class="card red" href="#ncr-source">
+          <a class="card red" href="#ncr-source-route">
             <span>
               <strong>True NCR Organized Source</strong>
               Organized NCR examples, formal reference cases, drafts, source indexes, and evidence pointers.
@@ -517,6 +577,95 @@
         </div>
       </section>
 
+      <section class="section" id="route-details" aria-labelledby="route-details-title">
+        <h3 id="route-details-title">Route Details And Next Actions</h3>
+        <div class="route-grid">
+          <article class="route-detail" id="encoder-package-route">
+            <h4>Daily Encoder Package</h4>
+            <div class="route-meta">
+              <span class="route-tag">Daily use</span>
+              <span class="route-tag">Current package route</span>
+            </div>
+            <p>Use this route for the active monthly checksheet, encoder guide, WI references, and inspection print support.</p>
+            <p>The portal keeps the current route visible while controlled files remain inside the approved company file system.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="#encoder-package">View register line</a>
+              <a class="mini-button" href="#daily-routes">Back to daily routes</a>
+            </div>
+          </article>
+
+          <article class="route-detail" id="wi-print-route">
+            <h4>WI PDF / Print Files</h4>
+            <div class="route-meta">
+              <span class="route-tag">Print support</span>
+              <span class="route-tag">Workshop reference</span>
+            </div>
+            <p>Use this route for printable work instructions, blank inspection forms, and helper pages needed for repeated workshop printing.</p>
+            <p>Keep released instructions and review copies separated so daily users see only the current route.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="#wi-print">View register line</a>
+              <a class="mini-button" href="#daily-routes">Back to daily routes</a>
+            </div>
+          </article>
+
+          <article class="route-detail" id="status-print-route">
+            <h4>PASS / HOLD Print Supply</h4>
+            <div class="route-meta">
+              <span class="route-tag">Inspection status</span>
+              <span class="route-tag">Release control</span>
+            </div>
+            <p>Use this route for PASS and HOLD print helpers that support clear workshop inspection status and release control.</p>
+            <p>The route is shown separately so production and QC can understand where status-print support belongs.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="#status-print">View register line</a>
+              <a class="mini-button" href="#daily-routes">Back to daily routes</a>
+            </div>
+          </article>
+
+          <article class="route-detail" id="ncr-list-route">
+            <h4>NCR List</h4>
+            <div class="route-meta">
+              <span class="route-tag">Case register</span>
+              <span class="route-tag">Follow-up visibility</span>
+            </div>
+            <p>Use this route for NCR case numbers, record status, and register references needed for nonconformance follow-up.</p>
+            <p>It keeps NCR tracking visible without exposing raw evidence folders on the public portal page.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="#ncr-list">View register line</a>
+              <a class="mini-button" href="#ncr-control">Back to NCR control</a>
+            </div>
+          </article>
+
+          <article class="route-detail" id="ncr-cases-route">
+            <h4>NCR Case Index</h4>
+            <div class="route-meta">
+              <span class="route-tag">Reader-ready index</span>
+              <span class="route-tag">Case status</span>
+            </div>
+            <p>Use this route for a reader-ready case page with current status, NCR file route, and evidence route.</p>
+            <p>The index helps management and QC review case progress without searching through scattered folders.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="#ncr-cases">View register line</a>
+              <a class="mini-button" href="#ncr-control">Back to NCR control</a>
+            </div>
+          </article>
+
+          <article class="route-detail" id="ncr-source-route">
+            <h4>True NCR Organized Source</h4>
+            <div class="route-meta">
+              <span class="route-tag">Controlled source</span>
+              <span class="route-tag">Evidence pointers</span>
+            </div>
+            <p>Use this route for organized NCR examples, formal reference cases, drafts, source indexes, and evidence pointers.</p>
+            <p>The source route stays separate from daily cards so reference material does not bury the current working routes.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="#ncr-source">View register line</a>
+              <a class="mini-button" href="#ncr-control">Back to NCR control</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="section table-scroll" id="current-register" aria-labelledby="register-title">
         <h3 id="register-title">Current QC Portal Register</h3>
         <table class="quick-list">
@@ -533,37 +682,37 @@
               <td>Daily Encoder Package</td>
               <td><span class="pill">CURRENT</span></td>
               <td>Daily encoding, active monthly checksheet, encoder guide, WI PDF access, and print supply route.</td>
-              <td><a class="mini-button" href="#daily-routes">Open</a></td>
+              <td><a class="mini-button" href="#encoder-package-route">Open</a></td>
             </tr>
             <tr id="wi-print">
               <td>WI PDF / Print Files</td>
               <td><span class="pill">CURRENT</span></td>
               <td>Printable work instructions, blank inspection forms, and helper pages for repeated workshop printing.</td>
-              <td><a class="mini-button" href="#daily-routes">Open</a></td>
+              <td><a class="mini-button" href="#wi-print-route">Open</a></td>
             </tr>
             <tr id="status-print">
               <td>PASS / HOLD Print Supply</td>
               <td><span class="pill">CURRENT</span></td>
               <td>Status-sticker printing and inspection status support for workshop release control.</td>
-              <td><a class="mini-button" href="#daily-routes">Open</a></td>
+              <td><a class="mini-button" href="#status-print-route">Open</a></td>
             </tr>
             <tr id="ncr-list">
               <td>NCR List</td>
               <td><span class="pill">CURRENT</span></td>
               <td>Direct register route for NCR case numbers, status tracking, and current case register items.</td>
-              <td><a class="mini-button" href="#ncr-control">Open</a></td>
+              <td><a class="mini-button" href="#ncr-list-route">Open</a></td>
             </tr>
             <tr id="ncr-cases">
               <td>NCR Case Index</td>
               <td><span class="pill">CURRENT</span></td>
               <td>Reader-ready case index with current status, NCR file route, and evidence route.</td>
-              <td><a class="mini-button" href="#ncr-control">Open</a></td>
+              <td><a class="mini-button" href="#ncr-cases-route">Open</a></td>
             </tr>
             <tr id="ncr-source">
               <td>True NCR Organized Source</td>
               <td><span class="pill">CURRENT</span></td>
               <td>Organized NCR examples, reference cases, drafts, evidence pointers, and source indexes.</td>
-              <td><a class="mini-button" href="#ncr-control">Open</a></td>
+              <td><a class="mini-button" href="#ncr-source-route">Open</a></td>
             </tr>
             <tr>
               <td>QC Coordination Files</td>
