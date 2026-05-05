@@ -201,7 +201,7 @@
     }
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
       padding: 14px;
     }
@@ -471,6 +471,7 @@
       <nav class="nav-actions" aria-label="Primary">
         <a class="nav-link primary" href="#daily-routes">Daily Routes</a>
         <a class="nav-link" href="#ncr-control">NCR Control</a>
+        <a class="nav-link" href="#reports-production-route">Reports</a>
         <a class="nav-link" href="#current-register">Current Register</a>
       </nav>
     </header>
@@ -504,6 +505,10 @@
               <b>Coordination</b>
               <span>Organization, manpower, training, and improvement files stay visible as current Workshop QC coordination work.</span>
             </div>
+            <div>
+              <b>Protected Access</b>
+              <span>Company file links require an authorized GCC or ALOMA Microsoft 365 account before the protected records open.</span>
+            </div>
           </div>
         </aside>
       </section>
@@ -511,29 +516,37 @@
       <section class="section" id="daily-routes" aria-labelledby="daily-title">
         <h3 id="daily-title">Daily QC Routes</h3>
         <div class="cards">
-          <a class="card" href="https://gccuaec-my.sharepoint.com/:u:/r/personal/arthur_aloma-uae_com/Documents/QC%20Files/03_WORK_INSTRUCTIONS/00_QC_WI_ENCODER_PACKAGE_MAY_2026/00_OPEN_THIS_FIRST_PORTAL.html?web=1" target="_blank" rel="noopener noreferrer">
+          <a class="card" href="#encoder-package-route">
             <span>
               <strong>Daily Encoder Package</strong>
-              Opens the current May 2026 encoder portal with checksheet, guide, WI, and print actions.
-              <small>Protected company file opens in a new tab.</small>
+              Shows the current May 2026 encoder route with checksheet, guide, WI, and print actions.
+              <small>Protected company file link is inside the route detail.</small>
             </span>
-            <em>Open live portal</em>
+            <em>View route</em>
           </a>
-          <a class="card green" href="https://gccuaec-my.sharepoint.com/:f:/g/personal/arthur_aloma-uae_com/IgAkPSPGoqtcQ7elSZf1chnWAWoJYqfr7Qi8r7gs1m3RBbw?e=xoo5hO" target="_blank" rel="noopener noreferrer">
+          <a class="card green" href="#wi-print-route">
             <span>
               <strong>WI PDF / Print Files</strong>
-              Opens the current package folder for printable work instructions, checksheets, and helper files.
-              <small>Protected company folder opens in a new tab.</small>
+              Shows the current package route for printable work instructions, checksheets, and helper files.
+              <small>Protected company folder link is inside the route detail.</small>
             </span>
-            <em>Open package folder</em>
+            <em>View route</em>
           </a>
-          <a class="card amber" href="https://gccuaec-my.sharepoint.com/:u:/r/personal/arthur_aloma-uae_com/Documents/QC%20Files/03_WORK_INSTRUCTIONS/00_QC_WI_ENCODER_PACKAGE_MAY_2026/08_QC_STATUS_STICKERS/00_PRINT_PASS_OR_HOLD_START_HERE.html?web=1" target="_blank" rel="noopener noreferrer">
+          <a class="card amber" href="#status-print-route">
             <span>
               <strong>PASS / HOLD Print Supply</strong>
-              Opens the PASS / HOLD print helper for inspection status stickers and A4 print preparation.
-              <small>Protected print helper opens in a new tab.</small>
+              Shows the PASS / HOLD print helper route for inspection status stickers and A4 print preparation.
+              <small>Protected print helper link is inside the route detail.</small>
             </span>
-            <em>Open print helper</em>
+            <em>View route</em>
+          </a>
+          <a class="card green" href="#reports-production-route">
+            <span>
+              <strong>Reports / Production Support</strong>
+              Shows the monthly checksheet output, report guide, and production-support route in one place.
+              <small>Protected workbook and guide stay inside the company package.</small>
+            </span>
+            <em>View route</em>
           </a>
         </div>
       </section>
@@ -541,29 +554,29 @@
       <section class="section" id="ncr-control" aria-labelledby="ncr-title">
         <h3 id="ncr-title">NCR And Evidence Control</h3>
         <div class="cards">
-          <a class="card red" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/03_WQC_QC_LEAD_PORTAL/00_START_HERE_QC_LEAD_PORTAL.html?web=1" target="_blank" rel="noopener noreferrer">
+          <a class="card red" href="#ncr-list-route">
             <span>
               <strong>NCR List</strong>
-              Opens the Workshop QC portal where NCR forms, NG logs, quarantine, and evidence routes are organized.
-              <small>Protected WQC portal opens in a new tab.</small>
+              Shows the Workshop QC route for NCR forms, NG logs, quarantine, and evidence organization.
+              <small>Protected WQC portal link is inside the route detail.</small>
             </span>
-            <em>Open NCR lane</em>
+            <em>View route</em>
           </a>
-          <a class="card red" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/03_WQC_QC_LEAD_PORTAL/00_START_HERE_QC_LEAD_PORTAL.html?web=1" target="_blank" rel="noopener noreferrer">
+          <a class="card red" href="#ncr-cases-route">
             <span>
               <strong>NCR Case Index</strong>
-              Opens the WQC control portal for current NCR status, case follow-up, and reader-ready evidence routes.
-              <small>Protected WQC portal opens in a new tab.</small>
+              Shows the route for current NCR status, case follow-up, and reader-ready evidence routes.
+              <small>Protected WQC portal link is inside the route detail.</small>
             </span>
-            <em>Open case route</em>
+            <em>View route</em>
           </a>
-          <a class="card red" href="https://gccuaec.sharepoint.com/sites/AlomaWorkshopQC/Shared%20Documents/03_WQC_QC_LEAD_PORTAL/00_START_HERE_QC_LEAD_PORTAL.html?web=1" target="_blank" rel="noopener noreferrer">
+          <a class="card red" href="#ncr-source-route">
             <span>
               <strong>True NCR Organized Source</strong>
-              Opens the WQC portal route to controlled NCR examples, forms, NG logs, and evidence references.
-              <small>Protected WQC portal opens in a new tab.</small>
+              Shows the route to controlled NCR examples, forms, NG logs, and evidence references.
+              <small>Protected WQC portal link is inside the route detail.</small>
             </span>
-            <em>Open source route</em>
+            <em>View route</em>
           </a>
         </div>
       </section>
@@ -577,11 +590,11 @@
           </div>
           <div class="info">
             <b>Reports And Charts</b>
-            <p>Monthly and weekly QC reporting routes keep improvement work visible and reviewable.</p>
+            <p>Monthly checksheet output and the weekly/monthly report guide keep QC activity visible and reviewable.</p>
           </div>
           <div class="info">
             <b>Production Support</b>
-            <p>Forms, work instructions, status routes, and NCR follow-up support production decisions.</p>
+            <p>Forms, work instructions, status routes, reports, and NCR follow-up support production decisions.</p>
           </div>
           <div class="info">
             <b>Continuity</b>
@@ -634,6 +647,21 @@
             <div class="route-actions">
               <a class="mini-button" href="https://gccuaec-my.sharepoint.com/:u:/r/personal/arthur_aloma-uae_com/Documents/QC%20Files/03_WORK_INSTRUCTIONS/00_QC_WI_ENCODER_PACKAGE_MAY_2026/08_QC_STATUS_STICKERS/00_PRINT_PASS_OR_HOLD_START_HERE.html?web=1" target="_blank" rel="noopener noreferrer">Open print helper</a>
               <a class="mini-button" href="#status-print">View register line</a>
+              <a class="mini-button" href="#daily-routes">Back to daily routes</a>
+            </div>
+          </article>
+
+          <article class="route-detail" id="reports-production-route">
+            <h4>Reports / Production Support</h4>
+            <div class="route-meta">
+              <span class="route-tag">Reporting route</span>
+              <span class="route-tag">Production support</span>
+            </div>
+            <p>Use this route for the current monthly checksheet output, weekly/monthly report guide, and production-support references connected to the encoder package.</p>
+            <p>The public portal shows the route and status only; the workbook, guide, and records remain inside the protected company package.</p>
+            <div class="route-actions">
+              <a class="mini-button" href="https://gccuaec-my.sharepoint.com/:f:/g/personal/arthur_aloma-uae_com/IgAkPSPGoqtcQ7elSZf1chnWAWoJYqfr7Qi8r7gs1m3RBbw?e=xoo5hO" target="_blank" rel="noopener noreferrer">Open package folder</a>
+              <a class="mini-button" href="#reports-production">View register line</a>
               <a class="mini-button" href="#daily-routes">Back to daily routes</a>
             </div>
           </article>
@@ -715,6 +743,12 @@
               <td>Status-sticker printing and inspection status support for workshop release control.</td>
               <td><a class="mini-button" href="https://gccuaec-my.sharepoint.com/:u:/r/personal/arthur_aloma-uae_com/Documents/QC%20Files/03_WORK_INSTRUCTIONS/00_QC_WI_ENCODER_PACKAGE_MAY_2026/08_QC_STATUS_STICKERS/00_PRINT_PASS_OR_HOLD_START_HERE.html?web=1" target="_blank" rel="noopener noreferrer">Open</a></td>
             </tr>
+            <tr id="reports-production">
+              <td>Reports / Production Support</td>
+              <td><span class="pill">CURRENT</span></td>
+              <td>Current monthly checksheet output, weekly/monthly report guide, and production-support references connected to the encoder package.</td>
+              <td><a class="mini-button" href="https://gccuaec-my.sharepoint.com/:f:/g/personal/arthur_aloma-uae_com/IgAkPSPGoqtcQ7elSZf1chnWAWoJYqfr7Qi8r7gs1m3RBbw?e=xoo5hO" target="_blank" rel="noopener noreferrer">Open</a></td>
+            </tr>
             <tr id="ncr-list">
               <td>NCR List</td>
               <td><span class="pill">CURRENT</span></td>
@@ -745,7 +779,8 @@
 
       <div class="footer-note">
         <b>Portal boundary:</b> this public page shows the organized QC control routes and current status only.
-        Controlled records, NCR evidence, templates, and company files remain inside the approved company file system.
+        Controlled records, NCR evidence, templates, and company files remain inside the approved company file system
+        and require an authorized GCC or ALOMA Microsoft 365 account to open.
       </div>
     </main>
   </div>
